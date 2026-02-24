@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<!-- saved from url=(0069)file:///C:/Users/LAPT-PF5QEG2R/Downloads/diagrama_final_completo.html -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagrama de Flujo - Control Integral de Proyectos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #e2e8f0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: #cbd5e1;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .tabs-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+            background: #1e293b;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #334155;
+        }
+
+        .tab-btn {
+            padding: 12px 24px;
+            border: 2px solid #475569;
+            background: transparent;
+            color: #cbd5e1;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover {
+            border-color: #60a5fa;
+            color: #60a5fa;
+            transform: translateY(-2px);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #60a5fa, #a78bfa);
+            border-color: transparent;
+            color: white;
+        }
+
+        .content {
+            display: none;
+            background: #1e293b;
+            border-radius: 12px;
+            padding: 30px;
+            border: 1px solid #334155;
+            animation: fadeIn 0.5s ease-in;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .content.active {
+            display: block;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* PESTAÑA 1: RESPONSABILIDADES */
+        .roles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .role-card {
+            border: 2px solid;
+            border-radius: 12px;
+            padding: 20px;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            transition: all 0.3s ease;
+        }
+
+        .role-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .role-card.nivel1 {
+            border-color: #ef4444;
+            box-shadow: 0 0 20px rgba(239, 68, 68, 0.15);
+        }
+
+        .role-card.nivel2 {
+            border-color: #f59e0b;
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.15);
+        }
+
+        .role-card.nivel3 {
+            border-color: #3b82f6;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
+        }
+
+        .role-card.transversal {
+            border-color: #8b5cf6;
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.15);
+        }
+
+        .role-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid;
+        }
+
+        .role-card.nivel1 .role-header {
+            border-bottom-color: #ef4444;
+        }
+
+        .role-card.nivel2 .role-header {
+            border-bottom-color: #f59e0b;
+        }
+
+        .role-card.nivel3 .role-header {
+            border-bottom-color: #3b82f6;
+        }
+
+        .role-card.transversal .role-header {
+            border-bottom-color: #8b5cf6;
+        }
+
+        .role-title {
+            font-size: 1.15em;
+            font-weight: bold;
+        }
+
+        .role-card.nivel1 .role-title { color: #ef4444; }
+        .role-card.nivel2 .role-title { color: #f59e0b; }
+        .role-card.nivel3 .role-title { color: #3b82f6; }
+        .role-card.transversal .role-title { color: #8b5cf6; }
+
+        .role-level {
+            font-size: 0.75em;
+            color: #94a3b8;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .role-objective {
+            font-size: 0.9em;
+            color: #cbd5e1;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.02);
+            border-left: 3px solid;
+            border-radius: 4px;
+        }
+
+        .role-card.nivel1 .role-objective { border-left-color: #ef4444; }
+        .role-card.nivel2 .role-objective { border-left-color: #f59e0b; }
+        .role-card.nivel3 .role-objective { border-left-color: #3b82f6; }
+        .role-card.transversal .role-objective { border-left-color: #8b5cf6; }
+
+        .section-title {
+            font-size: 0.85em;
+            font-weight: bold;
+            color: #94a3b8;
+            text-transform: uppercase;
+            margin-top: 12px;
+            margin-bottom: 8px;
+        }
+
+        .activity-list {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .activity-list li {
+            font-size: 0.9em;
+            color: #cbd5e1;
+            padding: 6px 0;
+            padding-left: 20px;
+            position: relative;
+            line-height: 1.4;
+        }
+
+        .activity-list li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .role-card.nivel1 .activity-list li:before { color: #ef4444; }
+        .role-card.nivel2 .activity-list li:before { color: #f59e0b; }
+        .role-card.nivel3 .activity-list li:before { color: #3b82f6; }
+        .role-card.transversal .activity-list li:before { color: #8b5cf6; }
+
+        .info-field {
+            font-size: 0.85em;
+            color: #a1a5af;
+            margin-top: 8px;
+            padding: 6px;
+            background: rgba(255, 255, 255, 0.01);
+            border-radius: 3px;
+        }
+
+        .info-field strong {
+            color: #cbd5e1;
+        }
+
+        /* PESTAÑA 2: MATRIZ RACI */
+        .matrix-container {
+            overflow-x: auto;
+            border-radius: 8px;
+            border: 1px solid #334155;
+        }
+
+        .matrix-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #0f172a;
+            min-width: 900px;
+        }
+
+        .matrix-table thead {
+            background: linear-gradient(90deg, #1e293b, #334155);
+        }
+
+        .matrix-table th {
+            padding: 15px;
+            text-align: left;
+            color: #a1a5af;
+            font-weight: 600;
+            font-size: 0.9em;
+            border-bottom: 2px solid #334155;
+        }
+
+        .matrix-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #334155;
+            color: #cbd5e1;
+            font-size: 0.9em;
+            text-align: center;
+        }
+
+        .matrix-table tbody tr:hover {
+            background: #1e293b;
+        }
+
+        .activity-name {
+            text-align: left;
+            font-weight: 500;
+            min-width: 200px;
+        }
+
+        .raci-badge {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+
+        .raci-r { background: #ef4444; color: white; }
+        .raci-a { background: #f59e0b; color: white; }
+        .raci-c { background: #3b82f6; color: white; }
+        .raci-i { background: #8b5cf6; color: white; }
+        .raci-none { color: #475569; }
+
+        .matrix-legend {
+            margin-top: 20px;
+            padding: 15px;
+            background: #0f172a;
+            border-radius: 8px;
+            border-left: 4px solid #60a5fa;
+        }
+
+        .legend-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9em;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
+        }
+
+        /* PESTAÑA 3: VALIDACIONES */
+        .validations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .validation-box {
+            background: #0f172a;
+            border: 2px solid;
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .validation-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .validation-box.critical {
+            border-color: #ef4444;
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.1);
+        }
+
+        .validation-box.important {
+            border-color: #f59e0b;
+            box-shadow: 0 0 15px rgba(245, 158, 11, 0.1);
+        }
+
+        .validation-box.standard {
+            border-color: #3b82f6;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.1);
+        }
+
+        .validation-title {
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 12px;
+        }
+
+        .validation-box.critical .validation-title { color: #ef4444; }
+        .validation-box.important .validation-title { color: #f59e0b; }
+        .validation-box.standard .validation-title { color: #3b82f6; }
+
+        .validation-item {
+            font-size: 0.9em;
+            color: #cbd5e1;
+            margin-bottom: 10px;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 4px;
+        }
+
+        .validation-item strong {
+            color: #a1a5af;
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        /* PESTAÑA 4: PASO A PASO */
+        .steps-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .step {
+            background: #0f172a;
+            border-left: 5px solid;
+            border-radius: 8px;
+            padding: 20px;
+            position: relative;
+        }
+
+        .step.paso1, .step.paso5, .step.paso9 { border-left-color: #3b82f6; }
+        .step.paso2, .step.paso6, .step.paso10 { border-left-color: #8b5cf6; }
+        .step.paso3, .step.paso7, .step.paso11 { border-left-color: #f59e0b; }
+        .step.paso4, .step.paso8 { border-left-color: #ef4444; }
+
+        .step-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: #1e293b;
+            border: 2px solid;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1em;
+        }
+
+        .step.paso1 .step-number, .step.paso5 .step-number, .step.paso9 .step-number { 
+            border-color: #3b82f6;
+            color: #3b82f6;
+        }
+        .step.paso2 .step-number, .step.paso6 .step-number, .step.paso10 .step-number { 
+            border-color: #8b5cf6;
+            color: #8b5cf6;
+        }
+        .step.paso3 .step-number, .step.paso7 .step-number, .step.paso11 .step-number { 
+            border-color: #f59e0b;
+            color: #f59e0b;
+        }
+        .step.paso4 .step-number, .step.paso8 .step-number { 
+            border-color: #ef4444;
+            color: #ef4444;
+        }
+
+        .step-title {
+            font-size: 1.05em;
+            font-weight: bold;
+            color: #a1a5af;
+            margin-bottom: 10px;
+            margin-top: 5px;
+        }
+
+        .step-content {
+            font-size: 0.9em;
+            color: #cbd5e1;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .step-detail {
+            font-size: 0.85em;
+            color: #94a3b8;
+            margin-top: 8px;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.01);
+            border-radius: 4px;
+        }
+
+        .step-detail strong {
+            color: #cbd5e1;
+        }
+
+        .arrow {
+            text-align: center;
+            color: #475569;
+            font-size: 1.5em;
+            margin: 5px 0;
+        }
+
+        /* LEYENDA GENERAL */
+        .legend {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin-top: 30px;
+            padding: 20px;
+            background: #0f172a;
+            border-radius: 8px;
+            border: 1px solid #334155;
+        }
+
+        .legend-item-card {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85em;
+        }
+
+        .legend-color-box {
+            width: 14px;
+            height: 14px;
+            border-radius: 3px;
+        }
+
+        .legend-text {
+            color: #cbd5e1;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #334155;
+            color: #64748b;
+            font-size: 0.85em;
+        }
+
+        /* RESPONSIVO */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .roles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tabs-container {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .tab-btn {
+                width: 100%;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .matrix-table {
+                font-size: 0.85em;
+            }
+
+            .matrix-table th,
+            .matrix-table td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔄 DIAGRAMA DE FLUJO</h1>
+            <p class="subtitle">Control Integral de Proyectos</p>
+            <p class="subtitle">Reestructuración Integral 2026</p>
+        </header>
+
+        <div class="tabs-container">
+            <button class="tab-btn active" onclick="mostrarTab(&#39;responsabilidades&#39;)">👥 Responsabilidades</button>
+            <button class="tab-btn" onclick="mostrarTab(&#39;raci&#39;)">📊 Matriz RACI</button>
+            <button class="tab-btn" onclick="mostrarTab(&#39;validaciones&#39;)">✓ Validaciones</button>
+            
+        </div>
+
+        <!-- PESTAÑA 1: RESPONSABILIDADES -->
+        <div id="responsabilidades" class="content active">
+            <div class="roles-grid">
+                <!-- GERENTE -->
+                <div class="role-card nivel1">
+                    <div class="role-header">
+                        <div>
+                            <div class="role-title">👨‍💼 Gerente de Control</div>
+                            <div class="role-level">Nivel 1 - Nacional</div>
+                        </div>
+                    </div>
+                    <div class="role-objective">
+                        Dirigir y gobernar el sistema nacional de control de proyectos asegurando cumplimiento metodológico, estabilidad financiera y alineación estratégica.
+                    </div>
+                    <div class="section-title">Responsabilidades:</div>
+                    <ul class="activity-list">
+                        <li>Definir y actualizar la metodología corporativa de control</li>
+                        <li>Revisar presupuestos base y programas base</li>
+                        <li>Consolidar resultados nacionales por zona</li>
+                        <li>Supervisar estados de resultados</li>
+                        <li>Reportar a Dirección General y Administración</li>
+                        <li>Liderar transición e implementación del ERP</li>
+                        <li>Retroalimentar sobre desempeño y riesgos</li>
+                    </ul>
+                    <div class="info-field"><strong>Tiempo:</strong> Actividades semanales</div>
+                    <div class="info-field"><strong>Documentos:</strong> Informe ejecutivo semanal, Estado de resultados consolidado, KPIs corporativos, Reporte histórico</div>
+                    <div class="info-field"><strong>Reporta a:</strong> Dirección General y Administración</div>
+                </div>
+
+                <!-- REVISOR NACIONAL -->
+                <div class="role-card transversal">
+                    <div class="role-header">
+                        <div>
+                            <div class="role-title">🔍 Revisor de RE y OC</div>
+                            <div class="role-level">Transversal - Control</div>
+                        </div>
+                    </div>
+                    <div class="role-objective">
+                        Ejercer control preventivo del costo comprometido antes de la autorización del gasto, validando presupuestalmente todas las requisiciones.
+                    </div>
+                    <div class="section-title">Responsabilidades:</div>
+                    <ul class="activity-list">
+                        <li>Validar presupuestalmente requisiciones (V1)</li>
+                        <li>Confirmar disponibilidad presupuestal (V1)</li>
+                        <li>Revisar correcta asignación de centro de costo (V2)</li>
+                        <li>Analizar impacto en presupuesto proyectado (V3)</li>
+                        <li>Retroalimentar a Subcoordinadores</li>
+                        <li>Escalar desviaciones relevantes</li>
+                    </ul>
+                    <div class="info-field"><strong>Tiempo:</strong> Máximo 1 día hábil para validación</div>
+                    <div class="info-field"><strong>Documentos:</strong> Repositorio de hallazgos, Base de control de requisiciones y OC</div>
+                    <div class="info-field"><strong>Reporta a:</strong> Subcoordinador (transversal)</div>
+                </div>
+
+                <!-- COORDINADOR ZONA -->
+                <div class="role-card nivel2">
+                    <div class="role-header">
+                        <div>
+                            <div class="role-title">👔 Coordinador de Zona</div>
+                            <div class="role-level">Nivel 2 - 1 por Zona</div>
+                        </div>
+                    </div>
+                    <div class="role-objective">
+                        Asegurar el desempeño técnico–económico integral de los proyectos en su zona, supervisando costo, avance, programa y proforma.
+                    </div>
+                    <div class="section-title">Responsabilidades:</div>
+                    <ul class="activity-list">
+                        <li>Supervisar costo, avance, programa y proforma</li>
+                        <li>Validar técnicamente información antes de escalarla</li>
+                        <li>Supervisar Subcoordinadores</li>
+                        <li>Asegurar cumplimiento de objetivos del equipo</li>
+                        <li>Proyectar cierre económico</li>
+                        <li>Validar requisiciones y OC relevantes</li>
+                        <li>Documentar lecciones aprendidas</li>
+                        <li>Retroalimentar a Gerencia</li>
+                    <li>Autorizazión de cuadros de Aceros y Procura</li><li>Emision de Presupuestos, Proformas y Programas de Obra a los diferentes Departamentos</li><li>Atencion a Problematicas del Proyecto</li><li>Programación de pagos a Administración</li></ul>
+                    <div class="info-field"><strong>Tiempo:</strong> Actividades semanales</div>
+                    <div class="info-field"><strong>Documentos:</strong> Reporte zonal consolidado, Forecast de cierre, Análisis de desviaciones críticas</div>
+                    <div class="info-field"><strong>Reporta a:</strong> Gerente de Control</div>
+                </div>
+
+                <!-- SUBCOORDINADOR -->
+                <div class="role-card nivel3">
+                    <div class="role-header">
+                        <div>
+                            <div class="role-title">👤 Subcoordinador</div>
+                            <div class="role-level">Nivel 3 - Operativo</div>
+                        </div>
+                    </div>
+                    <div class="role-objective">
+                        Ejecutar el control operativo del proyecto y anticipar desviaciones técnicas y económicas de forma temprana.
+                    </div>
+                    <div class="section-title">Responsabilidades:</div>
+                    <ul class="activity-list">
+                        <li>Analizar avance físico real</li>
+                        <li>Comparar Programa vs Real (V4)</li>
+                        <li>Controlar presupuesto asignado</li>
+                        <li>Identificar desviaciones tempranas</li>
+                        <li>Tomar acciones preventivas</li>
+                        <li>Realizar análisis técnico–económico</li>
+                        <li>Controlar trabajos adicionales y extraordinarios</li>
+                        <li>Retroalimentar técnicamente con Revisor</li>
+                        <li>Retroalimentar con Coordinador</li>
+                    <li>Generar y/o Actualizar base de datos de Servicios / Subcontratos</li><li>Conciliacion de Costos / Avance con Sitio</li><li>Solicitud de Programacion de Embarques</li><li>Comunicacion Continua con Personal de Sitio</li><li>Programación de pagos a Administración</li></ul>
+                    <div class="info-field"><strong>Tiempo:</strong> Actividades semanales</div>
+                    <div class="info-field"><strong>Documentos:</strong> Base de datos Access (costo semanal), Estado financiero, Control de órdenes de cambio</div>
+                    <div class="info-field"><strong>Reporta a:</strong> Coordinador de Zona</div>
+                </div>
+
+                <!-- ANALISTA PRESUPUESTO -->
+                <div class="role-card nivel3">
+                    <div class="role-header">
+                        <div>
+                            <div class="role-title">💰 Analista de Precios Unitarios</div>
+                            <div class="role-level">Nivel 3 - 1 por Zona</div>
+                        </div>
+                    </div>
+                    <div class="role-objective">
+                        Garantizar una línea base económica sólida y técnicamente validada para todos los proyectos de la zona.
+                    </div>
+                    <div class="section-title">Responsabilidades:</div>
+                    <ul class="activity-list">
+                        <li>Elaborar y analizar presupuesto base (explosión de insumos)</li>
+                        <li>Revisar presupuestos recibidos</li>
+                        <li>Elaborar precios unitarios</li>
+                        <li>Actualizar presupuestos por cambios</li>
+                        <li>Retroalimentar con Subcoordinadores</li>
+                    </ul>
+                    <div class="info-field"><strong>Tiempo:</strong> Según adjudicación o nuevos proyectos</div>
+                    <div class="info-field"><strong>Documentos:</strong> Presupuesto base, Proforma, Base de datos de precios unitarios</div>
+                    <div class="info-field"><strong>Reporta a:</strong> Coordinador de Zona</div>
+                </div>
+
+                <!-- PROGRAMADOR -->
+                <div class="role-card nivel3">
+                    <div class="role-header">
+                        <div>
+                            <div class="role-title">📅 Programador</div>
+                            <div class="role-level">Nivel 3 - 1 por Zona</div>
+                        </div>
+                    </div>
+                    <div class="role-objective">
+                        Controlar el cronograma y asegurar coherencia entre avance físico y programa planificado.
+                    </div>
+                    <div class="section-title">Responsabilidades:</div>
+                    <ul class="activity-list">
+                        <li>Desarrollar programa base</li>
+                        <li>Reprogramar por cambios reales</li>
+                        <li>Integrar avance físico–programa</li>
+                        <li>Generar Curva S</li>
+                        <li>Dar soporte técnico a zonas</li>
+                        <li>Retroalimentar con Subcoordinadores</li>
+                    </ul>
+                    <div class="info-field"><strong>Tiempo:</strong> Actividades semanales</div>
+                    <div class="info-field"><strong>Documentos:</strong> Programa base, Programa actualizado, Curva S programada vs real</div>
+                    <div class="info-field"><strong>Reporta a:</strong> Coordinador de Zona</div>
+                </div>
+
+                <!-- ANALISTA AVANCES -->
+                <div class="role-card nivel3">
+                    <div class="role-header">
+                        <div>
+                            <div class="role-title">📊 Analista de Avances</div>
+                            <div class="role-level">Nivel 3 - Control D4</div>
+                        </div>
+                    </div>
+                    <div class="role-objective">
+                        Controlar y analizar el avance físico semanal de los proyectos, detectando desviaciones contra programa.
+                    </div>
+                    <div class="section-title">Responsabilidades:</div>
+                    <ul class="activity-list">
+                        <li>Revisar avances semanales</li>
+                        <li>Analizar avance contra programa (V4)</li>
+                        <li>Detectar desviaciones</li>
+                        <li>Retroalimentar con Subcoordinadores</li>
+                    <li>Liberación de Vales de Consumo ERP</li></ul>
+                    <div class="info-field"><strong>Tiempo:</strong> Actividades semanales</div>
+                    <div class="info-field"><strong>Documentos:</strong> Base de datos de control de avances, Reporte de desviaciones físicas</div>
+                    <div class="info-field"><strong>Reporta a:</strong> Coordinador de Zona</div>
+                </div>
+
+                <!-- ANALISTA MAQUINARIA -->
+                <div class="role-card nivel3">
+                    <div class="role-header">
+                        <div>
+                            <div class="role-title">🔧 Analista de Maquinaria</div>
+                            <div class="role-level">Nivel 3 - Facturación</div>
+                        </div>
+                    </div>
+                    <div class="role-objective">
+                        Controlar el uso eficiente de maquinaria y su impacto financiero en los proyectos.
+                    </div>
+                    <div class="section-title">Responsabilidades:</div>
+                    <ul class="activity-list">
+                        <li>Revisar facturación de maquinaria</li>
+                        <li>Revisar bitácoras de maquinaria</li>
+                        <li>Detectar desviaciones en uso de maquinaria y combustible</li>
+                        <li>Retroalimentar con Subcoordinadores</li>
+                    <li>Carga de costos de Rentas</li></ul>
+                    <div class="info-field"><strong>Tiempo:</strong> Actividades semanales</div>
+                    <div class="info-field"><strong>Documentos:</strong> Bitácora electrónica de maquinaria, Reporte de desviaciones</div>
+                    <div class="info-field"><strong>Reporta a:</strong> Coordinador de Zona</div>
+                </div>
+            </div>
+
+            <div class="legend">
+                <div class="legend-item-card">
+                    <div class="legend-color-box" style="background: #ef4444;"></div>
+                    <div class="legend-text"><strong>Nivel 1:</strong> Gobierno Nacional</div>
+                </div>
+                <div class="legend-item-card">
+                    <div class="legend-color-box" style="background: #f59e0b;"></div>
+                    <div class="legend-text"><strong>Nivel 2:</strong> Coordinadores Zona</div>
+                </div>
+                <div class="legend-item-card">
+                    <div class="legend-color-box" style="background: #3b82f6;"></div>
+                    <div class="legend-text"><strong>Nivel 3:</strong> Operativo/Especialistas</div>
+                </div>
+                <div class="legend-item-card">
+                    <div class="legend-color-box" style="background: #8b5cf6;"></div>
+                    <div class="legend-text"><strong>Transversal:</strong> Control Preventivo</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PESTAÑA 2: MATRIZ RACI -->
+        <div id="raci" class="content">
+            <div class="matrix-container">
+                <table class="matrix-table">
+                    <thead>
+                        <tr>
+                            <th>ACTIVIDAD</th>
+                            <th>Gerente</th>
+                            <th>Revisor</th>
+                            <th>Coordinador</th>
+                            <th>Subcoordinador</th>
+                            <th>Analista Presupuesto</th>
+                            <th>Programador</th>
+                            <th>Analista Avances</th>
+                            <th>Analista Maquinaria</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="activity-name">Elaborar Presupuesto Base</td>
+                            <td><span class="raci-badge raci-a">A</span></td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-badge raci-a">A</span></td>
+                            <td><span class="raci-badge raci-i">I</span></td>
+                            <td><span class="raci-badge raci-r">R</span></td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-none">-</span></td>
+                        </tr>
+                        <tr>
+                            <td class="activity-name">Elaborar Programa Base</td>
+                            <td><span class="raci-badge raci-a">A</span></td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-badge raci-a">A</span></td>
+                            <td><span class="raci-badge raci-i">I</span></td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-badge raci-r">R</span></td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-none">-</span></td>
+                        </tr>
+                        <tr>
+                            <td class="activity-name">Generar Requisición</td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="sasad">-</span></td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-badge raci-r">R</span></td>
+                            <td><span class="raci-badge raci-c">C</span></td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-none">-</span></td>
+                        </tr>
+                        <tr>
+                            <td class="activity-name">Validar V1 (Presupuesto)</td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-badge raci-r">R</span></td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-badge raci-i">I</span></td>
+                            <td><span class="raci-badge raci-c">C</span></td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-none">-</span></td>
+                        </tr>
+                        <tr>
+                            <td class="activity-name">Validar V2 (Centro Costo)</td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-badge raci-r">R</span></td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-badge raci-i">I</span></td>
+                            <td><span class="raci-badge raci-c">C</span></td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-none">-</span></td>
+                        </tr>
+                        <tr>
+                            <td class="activity-name">Validar V3 (Impacto Margen)</td>
+                            <td><span class="raci-badge raci-a">A</span></td>
+                            <td><span class="raci-badge raci-r">R</span></td>
+                            <td><span class="raci-badge raci-a">A</span></td>
+                            <td><span class="raci-badge raci-i">I</span></td>
+                            <td><span class="raci-badge raci-c">C</span></td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-none">-</span></td>
+                        </tr>
+                        <tr>
+                            <td class="activity-name">Generar Orden de Compra</td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-badge raci-r">R</span></td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-badge raci-i">I</span></td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-none">-</span></td>
+                        </tr>
+                        <tr>
+                            <td class="activity-name">Monitorear Avance Físico</td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-badge raci-a">A</span></td>
+                            <td><span class="raci-badge raci-r">R</span></td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-badge raci-c">C</span></td>
+                            <td><span class="raci-badge raci-r">R</span></td>
+                            <td><span class="raci-none">-</span></td>
+                        </tr>
+                        <tr>
+                            <td class="activity-name">Validar V4 (Desviación)</td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-badge raci-a">A</span></td>
+                            <td><span class="raci-badge raci-r">R</span></td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-badge raci-c">C</span></td>
+                            <td><span class="raci-badge raci-r">R</span></td>
+                            <td><span class="raci-none">-</span></td>
+                        </tr>
+                        <tr>
+                            <td class="activity-name">Monitorear Maquinaria</td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-badge raci-a">A</span></td>
+                            <td><span class="raci-badge raci-r">R</span></td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-badge raci-r">R</span></td>
+                        </tr>
+                        <tr>
+                            <td class="activity-name">Consolidar Resultados Zonal</td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-badge raci-r">R</span></td>
+                            <td><span class="raci-badge raci-i">I</span></td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-none">-</span></td>
+                        </tr>
+                        <tr>
+                            <td class="activity-name">Consolidar Resultados Nacional</td>
+                            <td><span class="raci-badge raci-r">R</span></td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-badge raci-i">I</span></td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-none">-</span></td>
+                            <td><span class="raci-none">-</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="matrix-legend">
+                <strong>Leyenda RACI:</strong>
+                <div class="legend-items">
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #ef4444;"></div>
+                        <div><strong>R = Responsable</strong> - Ejecuta el trabajo</div>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #f59e0b;"></div>
+                        <div><strong>A = Aprueba</strong> - Valida y da visto bueno</div>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #3b82f6;"></div>
+                        <div><strong>C = Consulta</strong> - Se le solicita opinión</div>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #8b5cf6;"></div>
+                        <div><strong>I = Informado</strong> - Se le notifica resultado</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PESTAÑA 3: VALIDACIONES DETALLADAS -->
+        <div id="validaciones" class="content">
+            <div class="validations-grid">
+                <!-- V1 -->
+                <div class="validation-box critical">
+                    <div class="validation-title">⚠️ V1: VALIDACIÓN PRESUPUESTAL - ¿PRESUPUESTO DISPONIBLE?</div>
+                    <div class="validation-item">
+                        <strong>Responsable:</strong>
+                        Revisor Nacional
+                    </div>
+                    <div class="validation-item">
+                        <strong>Criterios de Evaluación:</strong>
+                        Verificar que existe saldo presupuestal disponible en el centro de costo para comprometer esta partida. El saldo debe ser mayor o igual al costo de la requisición.
+                    </div>
+                    <div class="validation-item">
+                        <strong>Si FALLA:</strong>
+                        La requisición es RECHAZADA. Se escala a Coordinador de Zona para buscar presupuesto alternativo o replanificar la necesidad.
+                    </div>
+                    <div class="validation-item">
+                        <strong>Impacto:</strong>
+                        Bloquea la generación de Orden de Compra. Previene compromisos sin presupuesto.
+                    </div>
+                </div>
+
+                <!-- V2 -->
+                <div class="validation-box critical">
+                    <div class="validation-title">⚠️ V2: VALIDACIÓN CENTRO DE COSTO - ¿ASIGNACIÓN CORRECTA?</div>
+                    <div class="validation-item">
+                        <strong>Responsable:</strong>
+                        Revisor Nacional
+                    </div>
+                    <div class="validation-item">
+                        <strong>Criterios de Evaluación:</strong>
+                        Validar que el código de centro de costo es válido en el sistema y que la asignación es técnicamente correcta. Garantiza trazabilidad y análisis correcto de margen por proyecto.
+                    </div>
+                    <div class="validation-item">
+                        <strong>Si FALLA:</strong>
+                        Se devuelve a Subcoordinador para corrección ANTES de generar Orden de Compra. No impacta presupuesto, solo corrección de imputación contable.
+                    </div>
+                    <div class="validation-item">
+                        <strong>Impacto:</strong>
+                        Evita desviaciones en reportería. Asegura análisis financiero correcto por proyecto.
+                    </div>
+                </div>
+
+                <!-- V3 -->
+                <div class="validation-box important">
+                    <div class="validation-title">⚠️ V3: VALIDACIÓN DE MARGEN - ¿IMPACTO ACEPTABLE EN RENTABILIDAD?</div>
+                    <div class="validation-item">
+                        <strong>Responsable:</strong>
+                        Revisor Nacional (con análisis de Analistas de Presupuesto)
+                    </div>
+                    <div class="validation-item">
+                        <strong>Criterios de Evaluación:</strong>
+                        Analizar si este costo afecta significativamente la rentabilidad proyectada del proyecto. Umbral: si reduce margen más de 10% o si hay variaciones acumuladas.
+                    </div>
+                    <div class="validation-item">
+                        <strong>Si CRÍTICO:</strong>
+                        Se escala a Coordinador de Zona y/o Gerente de Control para aprobación de variación de margen. Requiere aprobación de nivel superior.
+                    </div>
+                    <div class="validation-item">
+                        <strong>Impacto:</strong>
+                        Protege rentabilidad de proyectos. Escala decisiones críticas al nivel apropiado.
+                    </div>
+                </div>
+
+                <!-- V4 -->
+                <div class="validation-box standard">
+                    <div class="validation-title">📊 V4: VALIDACIÓN DE DESVIACIÓN - ¿AVANCE SEGÚN PROGRAMA?</div>
+                    <div class="validation-item">
+                        <strong>Responsable:</strong>
+                        Subcoordinador / Analista de Avances / Coordinador de Zona
+                    </div>
+                    <div class="validation-item">
+                        <strong>Criterios de Evaluación:</strong>
+                        Identificar si el avance real difiere significativamente del cronograma. Umbral: desviación &gt; 5% de atraso o adelanto.
+                    </div>
+                    <div class="validation-item">
+                        <strong>Si SÍ HAY DESVIACIÓN:</strong>
+                        Se activa plan correctivo. Si es atraso → replanificación del cronograma. Si es adelanto → oportunidad de optimizar recursos.
+                    </div>
+                    <div class="validation-item">
+                        <strong>Impacto:</strong>
+                        Detección temprana de desviaciones permite correcciones antes de que sea demasiado tarde. Continuo (semanal), no solo al inicio.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        
+
+        <footer>
+            <p>Diagrama de Flujo - Control Integral de Proyectos | Reestructuración Integral 2026 | Versión 1.0</p>
+        </footer>
+    </div>
+
+    <script>
+        function mostrarTab(tabName) {
+            // Ocultar todos los contenidos
+            const contents = document.querySelectorAll('.content');
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Remover clase active de todos los botones
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // Mostrar el contenido seleccionado
+            document.getElementById(tabName).classList.add('active');
+
+            // Añadir clase active al botón clickeado
+            event.target.classList.add('active');
+        }
+    </script>
+
+
+</body></html>
