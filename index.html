@@ -530,6 +530,60 @@
             color: #cbd5e1;
         }
 
+
+        /* SWIMLANE */
+        .swimlane-wrapper {
+            display: grid;
+            gap: 16px;
+        }
+
+        .swimlane-row {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            border: 1px solid #334155;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .swimlane-label {
+            padding: 18px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+        }
+
+        .swimlane-track {
+            padding: 14px;
+            background: #0f172a;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 10px;
+            align-items: stretch;
+        }
+
+        .lane-step {
+            background: #1e293b;
+            border: 1px solid #475569;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+
+        .lane-step strong {
+            color: #f8fafc;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .lane-gerencia { background: linear-gradient(135deg, #ef4444, #b91c1c); }
+        .lane-coordinacion { background: linear-gradient(135deg, #f59e0b, #d97706); }
+        .lane-subcoord { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
+        .lane-control { background: linear-gradient(135deg, #8b5cf6, #6d28d9); }
+
         /* FOOTER */
         footer {
             text-align: center;
@@ -571,6 +625,10 @@
             .matrix-table td {
                 padding: 8px;
             }
+
+            .swimlane-row {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -586,7 +644,8 @@
             <button class="tab-btn active" onclick="mostrarTab(&#39;responsabilidades&#39;)">👥 Responsabilidades</button>
             <button class="tab-btn" onclick="mostrarTab(&#39;raci&#39;)">📊 Matriz RACI</button>
             <button class="tab-btn" onclick="mostrarTab(&#39;validaciones&#39;)">✓ Validaciones</button>
-            
+            <button class="tab-btn" onclick="mostrarTab(&#39;swimlane&#39;)">🏊 Diagrama Swimlane</button>
+
         </div>
 
         <!-- PESTAÑA 1: RESPONSABILIDADES -->
@@ -1082,6 +1141,52 @@
 
         
         
+
+
+        <!-- PESTAÑA 4: SWIMLANE -->
+        <div id="swimlane" class="content">
+            <h2 class="flow-title">Diagrama Swimlane del Flujo Operativo</h2>
+            <p class="subtitle" style="margin-bottom: 20px;">Vista por carriles de responsabilidad para el ciclo de requisición, validación y seguimiento.</p>
+
+            <div class="swimlane-wrapper">
+                <div class="swimlane-row">
+                    <div class="swimlane-label lane-subcoord">Subcoordinador / Analistas</div>
+                    <div class="swimlane-track">
+                        <div class="lane-step"><strong>1. Preparar requisición</strong>Integrar necesidad, cantidades y respaldo técnico.</div>
+                        <div class="lane-step"><strong>2. Cargar en sistema</strong>Registrar la requisición y centro de costo propuesto.</div>
+                        <div class="lane-step"><strong>7. Ejecutar correcciones</strong>Ajustar información cuando una validación regresa observaciones.</div>
+                        <div class="lane-step"><strong>10. Dar seguimiento semanal</strong>Actualizar avance físico-financiero y alertas.</div>
+                    </div>
+                </div>
+
+                <div class="swimlane-row">
+                    <div class="swimlane-label lane-control">Revisor Nacional (RE y OC)</div>
+                    <div class="swimlane-track">
+                        <div class="lane-step"><strong>3. Validación V1</strong>Confirmar disponibilidad presupuestal para comprometer gasto.</div>
+                        <div class="lane-step"><strong>4. Validación V2</strong>Verificar asignación correcta del centro de costo.</div>
+                        <div class="lane-step"><strong>5. Validación V3</strong>Analizar impacto de margen y necesidad de escalamiento.</div>
+                        <div class="lane-step"><strong>8. Liberar o escalar</strong>Autorizar continuidad o enviar a Coordinación/Gerencia.</div>
+                    </div>
+                </div>
+
+                <div class="swimlane-row">
+                    <div class="swimlane-label lane-coordinacion">Coordinador de Zona</div>
+                    <div class="swimlane-track">
+                        <div class="lane-step"><strong>6. Revisión técnica-zonal</strong>Validar coherencia con programa, proforma y prioridades.</div>
+                        <div class="lane-step"><strong>9. Aprobar variaciones</strong>Decidir sobre desvíos relevantes y plan de acción.</div>
+                        <div class="lane-step"><strong>11. Consolidar resultados</strong>Integrar indicadores y riesgos de la zona.</div>
+                    </div>
+                </div>
+
+                <div class="swimlane-row">
+                    <div class="swimlane-label lane-gerencia">Gerente de Control</div>
+                    <div class="swimlane-track">
+                        <div class="lane-step"><strong>12. Gobernanza nacional</strong>Revisar KPIs, márgenes y cumplimiento metodológico.</div>
+                        <div class="lane-step"><strong>13. Retroalimentar estrategia</strong>Definir ajustes de metodología y prioridades corporativas.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <footer>
             <p>Diagrama de Flujo - Control Integral de Proyectos | Reestructuración Integral 2026 | Versión 1.0</p>
